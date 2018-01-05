@@ -1,0 +1,29 @@
+<section class="content-wrap full youplay-login">
+	<div class="youplay-banner banner-top">
+		<div class="image" style="background-image: url('../img/esports.jpg')"></div>
+		<div class="info">
+			<div>
+				<div class="container align-center">
+					<div class="youplay-form">
+						<h1>Login</h1>
+						<div class="btn-group social-list dib">
+							<a class="btn btn-default" href="https://www.facebook.com/swea.srm"><i class="fa fa-facebook"></i></a>
+							<a class="btn btn-default" href="https://www.twitter.com/swea_srm"><i class="fa fa-twitter"></i></a>
+							<a class="btn btn-default" href="https://www.instagram.com/swea_srm"><i class="fa fa-instagram"></i></a>
+						</div>
+						<form name="loginForm" ng-submit="login()">
+							<div class="youplay-input">
+								<input type="email" ng-model="user.email" placeholder="Enter email" required>
+							</div>
+							<div class="youplay-input">
+								<input type="password" ng-model="user.password" placeholder="Enter password" required ng-minlength="8">
+							</div>
+							<button class="btn btn-default db" id="btnLoad" data-loading-text="<i class='fa fa-spinner fa-spin '>
+				</i> Submitting" type="submit" ng-disabled="loginForm.$invalid">Login</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

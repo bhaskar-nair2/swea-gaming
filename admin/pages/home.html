@@ -1,0 +1,324 @@
+<div class="youplay-banner banner-top youplay-banner-parallax xsmall">
+	<div class="image" style="background-image: url('../img/esports.jpg')">
+	</div>
+
+	<div class="info">
+		<div>
+			<div class="container">
+				<h1>GAMES</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container youplay-store">
+	<div class="row">
+		<section class="youplay-features container">
+			<div class="col-md-3 col-xs-12">
+				<div class="feature angled-bg">
+					<h3>Payment</h3>
+					<i class="fa fa-money"></i>
+					<h3>{{homeData.paid}}/{{homeData.total}}</h3>
+				</div>
+			</div>
+			<div class="col-md-3 col-xs-12">
+				<div class="feature angled-bg">
+					<h3>Users</h3>
+					<i class="fa fa-user"></i>
+					<h3>{{homeData.users1.length + homeData.users2.length + homeData.users3.length}}</h3>
+				</div>
+			</div>
+			<div class="col-md-3 col-xs-12">
+				<div class="feature angled-bg">
+					<h3>Games</h3>
+					<i class="fa fa-user"></i>
+					<h3>{{homeData.games}}</h3>
+				</div>
+			</div>
+			<div class="col-md-3 col-xs-12">
+				<div class="feature angled-bg pointer" ng-click="openStaffModal()">
+					<h3>&nbsp;</h3>
+					<i class="fa fa-user-plus"></i>
+					<h3>Add Staff</h3>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="panel" style="background-color:rgba(8,3,37,.9);" ng-show="homeData.users1.length">
+				<div class="panel-heading text-center">
+					<h3 class="panel-title">No Games Chosen</h3>
+				</div>
+				<div class="panel-body text-center">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Date</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>University/College</th>
+									<th>Phone</th>
+									<th>Payment</th>
+									<th>Games</th>
+									<th>Status</th>
+									<th>View</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in homeData.users1">
+									<th scope="row">{{ x.no+1 }}</th>
+									<td>{{x.info.reg | date: 'MMM d, y H:mm:ss' }}</td>
+									<td>{{x.info.name}}</td>
+									<td>{{x.email}}</td>
+									<td>{{x.info.university}}</td>
+									<td>{{x.info.phone}}</td>
+									<td>{{x.payment.paid}}/{{x.payment.total}}</td>
+									<td>{{x.info.games}}</td>
+									<td><span class="label" ng-class="{ 'label-danger': x.pr>0, 'label-info': x.pr==0 }">{{x.pr}}</span></td>
+									<td ng-click="viewUserModal(x)">
+										<button class="btn btn-primary btn-xs active"><i class="fa fa-eye"></i></button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel" style="background-color:rgba(8,3,37,.9);" ng-show="homeData.users2.length">
+				<div class="panel-heading text-center">
+					<h3 class="panel-title">Incomplete Payment</h3>
+				</div>
+				<div class="panel-body text-center">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Date</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>University/College</th>
+									<th>Phone</th>
+									<th>Payment</th>
+									<th>Games</th>
+									<th>Status</th>
+									<th>View</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in homeData.users2">
+									<th scope="row">{{ x.no+1 }}</th>
+									<td>{{x.info.reg | date: 'MMM d, y H:mm:ss' }}</td>
+									<td>{{x.info.name}}</td>
+									<td>{{x.email}}</td>
+									<td>{{x.info.university}}</td>
+									<td>{{x.info.phone}}</td>
+									<td>{{x.payment.paid}}/{{x.payment.total}}</td>
+									<td>{{x.info.games}}</td>
+									<td><span class="label" ng-class="{ 'label-danger': x.pr>0, 'label-info': x.pr==0 }">{{x.pr}}</span></td>
+									<td ng-click="viewUserModal(x)">
+										<button class="btn btn-primary btn-xs active"><i class="fa fa-eye"></i></button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel" style="background-color:rgba(8,3,37,.9);" ng-show="homeData.users3.length">
+				<div class="panel-heading text-center">
+					<h3 class="panel-title">Complete</h3>
+				</div>
+				<div class="panel-body text-center">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Date</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>University/College</th>
+									<th>Phone</th>
+									<th>Payment</th>
+									<th>Games</th>
+									<th>Status</th>
+									<th>View</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in homeData.users3">
+									<th scope="row">{{ x.no+1 }}</th>
+									<td>{{x.info.reg | date: 'MMM d, y H:mm:ss' }}</td>
+									<td>{{x.info.name}}</td>
+									<td>{{x.email}}</td>
+									<td>{{x.info.university}}</td>
+									<td>{{x.info.phone}}</td>
+									<td>{{x.payment.paid}}/{{x.payment.total}}</td>
+									<td>{{x.info.games}}</td>
+									<td><span class="label" ng-class="{ 'label-danger': x.pr>0, 'label-info': x.pr==0 }">{{x.pr}}</span></td>
+									<td ng-click="viewUserModal(x)">
+										<button class="btn btn-primary btn-xs active"><i class="fa fa-eye"></i></button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="panel" style="background-color:rgba(8,3,37,.9);" ng-show="homeData.admins.length && homeData.type==0">
+				<div class="panel-heading text-center">
+					<h3 class="panel-title">Admins &amp; Volunteers</h3>
+				</div>
+				<div class="panel-body text-center">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>View</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="x in homeData.admins">
+									<th scope="row">{{ x.no+1 }}</th>
+									<td>{{x.name}}</td>
+									<td>{{x.email}}</td>
+									<td ng-click="viewUserModal(x)">
+										<button class="btn btn-primary btn-xs active"><i class="fa fa-eye"></i></button>
+									</td>
+									<td ng-click="deleteStaff(x._id)">
+										<button class="btn btn-xs active"><i class="fa fa-close"></i></button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="addStaff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+              </button>
+				<h4 class="modal-title" id="myModalLabel">Add a Staff</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" name="addStaffForm">
+					<div class="form-group">
+						<label>Email:</label>
+						<input type="email" ng-model="admin.email" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Name:</label>
+						<input type="text" ng-model="admin.name" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Password:</label>
+						<input type="password" ng-model="admin.password" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label>Account Type:</label>
+						<select class="form-control" ng-model="admin.type" ng-init="admin.type=1" ng-options="x.id as x.name for x in roles"></select>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button class="btn btn-primary pull-right" type="submit" ng-disabled="addStaffForm.$invalid" id="button_load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Submitting" ng-click="addStaff(admin)"><strong>Submit</strong></button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="viewUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+              </button>
+				<h4 class="modal-title text-center">'{{userData.info.name}}' from '{{userData.info.university}}' having '{{userData.email}}'</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<section class="youplay-features">
+						<div class="row centered">
+							<div class="col-md-3 col-xs-3" ng-repeat="x in games track by $index" ng-if="userData.games[$index]">
+								<div class="angled-bg">
+									<div class="angled-img">
+										<div class="img img-offset">
+											<img ng-src="{{x.img}}" alt="{{x.name}}">
+											<!--											<img ng-src="{{x.img}}" alt="{{x.name}}" ng-click="unsubscribe(x.id, userData._id)">-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="youplay-features">
+						<div class="col-md-4 col-xs-12">
+							<div class="feature angled-bg">
+								<h5>Payment</h5>
+								<i class="fa fa-money" style="font-size:2em;"></i>
+								<h5>{{userData.payment.paid}}/{{userData.payment.total}}</h5>
+							</div>
+						</div>
+						<div class="col-md-4 col-xs-12">
+							<div class="feature angled-bg">
+								<h5>Games</h5>
+								<i class="fa fa-gamepad" style="font-size:2em;"></i>
+								<h5>{{userData.info.games}}/4</h5>
+							</div>
+						</div>
+						<div class="col-md-4 col-xs-12">
+							<div class="feature angled-bg">
+								<h5>Transactions</h5>
+								<i class="fa fa-envelope" style="font-size:2em;"></i>
+								<h5>{{userData.pr}}/{{userData.transaction.length}}</h5>
+							</div>
+						</div>
+					</section>
+					<table class="table table-bordered" ng-show="userData.transaction.length>0">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Date</th>
+								<th>Transaction ID</th>
+								<th>Mobile Number</th>
+								<th>Amount</th>
+								<th>Type</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="q in userData.transaction">
+								<th scope="row">{{ $index+1 }}</th>
+								<td>{{q.date | date: 'MMM d, y H:mm:ss' }}</td>
+								<td>{{q.tid}}</td>
+								<td>{{q.number}}</td>
+								<td>{{q.amount}}</td>
+								<td>{{q.msg}}</td>
+								<td>
+									<h4><span class="label pointer" ng-class="{'label-success': q.status=='true', 'label-warning': q.status=='false', 'label-danger': q.status=='failed'}" ng-click="changeTransactionStatus(q._id)"><i class="fa" ng-class="{'fa-check': q.status=='true', 'fa-eye-slash': q.status=='false', 'fa-close': q.status=='failed'}"></i></span></h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger active pull-left" ng-click="deleteUser(userData._id)"><strong>Delete</strong></button>
+				<button class="btn btn-default" data-dismiss="modal">Close</button>
+				<button class="btn btn-primary active" ng-click="addPayment()"><strong>Add Money</strong></button>
+			</div>
+		</div>
+	</div>
+</div>
